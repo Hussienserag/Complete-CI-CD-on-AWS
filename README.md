@@ -285,11 +285,11 @@ The project supports multiple deployment strategies:
 
 This comprehensive DevOps project was developed by a talented team of engineers:
 
-- **[khaledhawil](https://github.com/khaledhawil)** - DevOps Engineer & Infrastructure Architect
-- **[AbdelrahmanElshahat](https://github.com/AbdelrahmanElshahat)** - DevOps Engineer & CI/CD Specialist
-- **[MennaHamouda](https://github.com/MennaHamouda)** - DevOps Engineer & Kubernetes Expert
-- **[alaaelnagy](https://github.com/alaaelnagy)** - DevOps Engineer & Monitoring Specialist
-- **[saraghonim](https://github.com/saraghonim)** - DevOps Engineer & Security Specialist
+- **[khaledhawil](https://github.com/khaledhawil)** - DevOps Engineer 
+- **[AbdelrahmanElshahat](https://github.com/AbdelrahmanElshahat)** - DevOps Engineer 
+- **[MennaHamouda](https://github.com/MennaHamouda)** - DevOps Engineer 
+- **[alaaelnagy](https://github.com/alaaelnagy)** - DevOps Engineer 
+- **[saraghonim](https://github.com/saraghonim)** - DevOps Engineer 
 
 ## Monitoring & Observability
 
@@ -307,32 +307,5 @@ We welcome contributions to improve this DevOps demonstration project:
 4. Push to the branch (`git push origin feature/enhancement`)
 5. Open a Pull Request with detailed description
 
-## Documentation
-
-### Comprehensive Guides
-- **[Deployment Architecture](./docs/DEPLOYMENT-SUMMARY.md)** - Complete infrastructure overview
-- **[Kubernetes Setup Guide](./docs/KUBERNETES-DEPLOYMENT-GUIDE.md)** - Production deployment steps
-- **[AWS Configuration](./docs/README-AWS-SETUP.md)** - Cloud services integration
-- **[Platform Features](./docs/FEATURE-SUMMARY.md)** - Capabilities and functionality overview
-
-### Quick Reference
-- **[Deployment Checklist](./k8s/DEPLOYMENT-CHECKLIST.md)** - Pre-deployment validation
-- **[Troubleshooting Guide](./k8s/IMAGE-PULL-TROUBLESHOOTING.md)** - Common issues resolution
-- **[Code Examples](./docs/KEY-CODE-SNIPPETS.js)** - Implementation patterns
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support & Contact
-
-For technical support or questions about this DevOps implementation:
-
-1. Review the comprehensive [documentation](./docs/)
-2. Check existing [issues](../../issues) for solutions
-3. Create a new issue with detailed information and logs
-4. Contact the development team through GitHub
-
----
 
 **ITI Project 2025** - Demonstrating enterprise-grade DevOps practices for modern cloud-native applications.
