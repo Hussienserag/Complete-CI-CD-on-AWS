@@ -4,50 +4,290 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![Docker](https://img.shields.io/badge/docker-enabled-blue.svg)]()
 [![Kubernetes](https://img.shields.io/badge/kubernetes-ready-326ce5.svg)]()
+[![Terraform](https://img.shields.io/badge/terraform-IaC-623ce4.svg)]()
+[![Ansible](https://img.shields.io/badge/ansible-automation-ee0000.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
 **Information Technology Institute (ITI) - AWS Restart Track Final Project**
 
-A modern, full-stack e-commerce platform built with the MERN stack (MongoDB, Express.js, React, Node.js) and designed for cloud-native deployment with comprehensive DevOps practices including Jenkins CI/CD, ArgoCD GitOps, and Kubernetes orchestration. This project demonstrates advanced DevOps methodologies and cloud-native application deployment strategies.
+A comprehensive, enterprise-grade e-commerce platform showcasing modern DevOps practices and cloud-native architecture. Built with the MERN stack and deployed using Infrastructure as Code (Terraform), Configuration Management (Ansible), Container Orchestration (Kubernetes), CI/CD automation (Jenkins), and GitOps workflows (ArgoCD).
+
+## DevOps Architecture Overview
+
+This project demonstrates a complete DevOps lifecycle implementation:
+
+- **Infrastructure as Code (IaC)** - Terraform modules for AWS infrastructure provisioning
+- **Configuration Management** - Ansible playbooks for server configuration and software installation
+- **Containerization** - Docker multi-stage builds for optimized application containers
+- **Container Orchestration** - Kubernetes manifests for scalable production deployment
+- **CI/CD Pipeline** - Jenkins declarative pipeline with automated testing and deployment
+- **GitOps** - ArgoCD for declarative, Git-driven continuous deployment
+- **Monitoring & Observability** - AWS CloudWatch integration for comprehensive monitoring
+- **Security** - SSL/TLS automation, secrets management, and security scanning
 
 ## Features
 
 ### Core E-Commerce Features
-- **User Authentication & Authorization** - JWT-based secure authentication with registration and signin
-- **Product Catalog** - Complete product management with categories, descriptions, and image uploads
-- **Shopping Cart** - Dynamic cart management with add/remove/update quantity functionality
-- **Order Management** - Full order processing workflow from cart to payment to fulfillment
-- **User Profiles** - Personal account management and order history
+- **User Authentication & Authorization** - JWT-based secure authentication system
+- **Product Catalog Management** - Complete CRUD operations with image upload to AWS S3
+- **Shopping Cart & Checkout** - Real-time cart management with secure payment processing
+- **Order Management System** - Full order lifecycle from placement to fulfillment
+- **User Profile Management** - Account settings, order history, and preferences
 - **Admin Dashboard** - Administrative interface for product and order management
-- **Payment Integration** - Secure payment processing workflow
-- **Shipping Management** - Shipping address and delivery options
+- **Responsive Design** - Mobile-first UI built with React and Bootstrap
 
-### Technical Features
-- **Responsive Design** - Mobile-first responsive UI built with React
-- **RESTful API** - Well-structured backend API with Express.js
-- **File Upload** - AWS S3 integration for product images and file storage
-- **Database Management** - MongoDB with Mongoose ODM for data persistence
-- **Containerization** - Docker containers for both frontend and backend
-- **Kubernetes Deployment** - Production-ready Kubernetes manifests
-- **CI/CD Pipeline** - Jenkins automation with Discord notifications
-- **GitOps** - ArgoCD for continuous deployment
-- **Monitoring** - Prometheus and Grafana integration
-- **SSL/TLS** - Automatic certificate management with cert-manager
+### Technical & DevOps Features
+- **Microservices Architecture** - Scalable, containerized service design
+- **RESTful API** - Well-structured backend with Express.js and MongoDB
+- **Cloud Storage Integration** - AWS S3 for file uploads and static assets
+- **Database Management** - MongoDB with Mongoose ODM and persistent storage
+- **SSL/TLS Encryption** - Automated certificate management with cert-manager
+- **Load Balancing** - NGINX ingress controller with traffic distribution
+- **Auto-scaling** - Horizontal Pod Autoscaling based on CPU/memory metrics
+- **Backup & Recovery** - Automated AWS backup strategies for data protection
 
-## Architecture
+## Architecture Diagrams
 
-This project follows a microservices architecture with containerized deployment:
-
-### Architecture Diagrams
-
-#### CI/CD Pipeline
+### CI/CD Pipeline Architecture
 ![CI/CD Pipeline](./svg/cicd.drawio.svg)
 
-#### Infrastructure Overview
-![Infrastructure](./svg/infra_aws.drawio.svg)
+### AWS Infrastructure Overview
+![AWS Infrastructure](./svg/infra_aws.drawio.svg)
 
-#### Kubernetes Deployment
-![Kubernetes](./svg/k8s.drawio.svg)
+### Kubernetes Cluster Topology
+![Kubernetes Architecture](./svg/k8s.drawio.svg)
+
+### Continuous Integration Flow
+![Continuous Integration](./svg/ci.drawio.svg)
+
+### Continuous Deployment Workflow
+![Continuous Deployment](./svg/cd.drawio.svg)
+
+### Complete DevOps Workflow
+![Complete CI/CD Workflow](./svg/Cicd_kh.drawio.svg)
+
+## Project Structure - DevOps Architecture
+
+```
+ITI-Project/
+├── Infrastructure as Code (Terraform/)
+│   ├── main.tf                         # Main infrastructure orchestration
+│   ├── variables.tf                    # Input variables definition
+│   ├── terraform.tfvars               # Environment-specific values
+│   ├── Provider_init.tf               # AWS provider configuration
+│   ├── Inventory_Output.tf            # Ansible inventory generation
+│   └── Modules/                       # Reusable infrastructure modules
+│       ├── Network_Module/            # VPC, subnets, security groups
+│       ├── Jenkins_EC2_Module/        # Jenkins server infrastructure
+│       ├── EKS_Cluster_Module/        # Kubernetes cluster setup
+│       ├── ECR_Module/                # Container registry configuration
+│       ├── S3_Logs_Module/            # Centralized logging storage
+│       └── Aws_Backup_Module/         # Backup and disaster recovery
+│
+├── Configuration Management (Ansible/)
+│   ├── ansible.cfg                    # Ansible configuration
+│   ├── my_inventory.ini              # Dynamic inventory from Terraform
+│   ├── roles_playbook.yml            # Main playbook execution
+│   └── roles/                        # Ansible roles for automation
+│       ├── Jenkins_Server_Installation/    # Jenkins setup and configuration
+│       ├── Docker_installation/           # Docker runtime installation
+│       ├── Cloud_Watch_Agent_Installation/ # AWS monitoring agent
+│       └── trivy_installation/           # Security vulnerability scanner
+│
+├── Container Orchestration (k8s/)
+│   ├── Core Application Manifests
+│   │   ├── namespace.yaml              # Application namespace isolation
+│   │   ├── configmap-secret.yaml       # Environment configuration & secrets
+│   │   ├── backend.yaml                # Node.js API deployment & service
+│   │   ├── frontend.yaml               # React app deployment & service
+│   │   └── mongodb.yaml                # MongoDB StatefulSet with persistence
+│   ├── Network & Security
+│       ├── ingress.yaml                # NGINX ingress with SSL termination
+│       └── cert-manager.yaml           # Automated SSL certificate management
+│
+├── GitOps Configuration (argoCD/)
+│   └── application.yaml               # ArgoCD application definition
+│
+├── CI/CD Pipeline
+│   ├── Jenkinsfile                    # Declarative pipeline definition
+│   └── sendDiscordNotification.groovy # Custom notification integration
+│
+├── Application Source Code
+│   ├── backend/                       # Node.js/Express API server
+│   │   ├── Dockerfile                 # Multi-stage production container
+│   │   ├── models/                    # Database schemas (User, Product, Order)
+│   │   ├── routes/                    # RESTful API endpoints
+│   │   ├── server.js                  # Application entry point
+│   │   └── package.json               # Dependencies and scripts
+│   │
+│   ├── frontend/                      # React single-page application
+│   │   ├── Dockerfile                 # Optimized production build
+│   │   ├── nginx.conf                 # Production web server configuration
+│   │   ├── src/screens/               # React components and pages
+│   │   ├── public/                    # Static assets
+│   │   └── package.json               # Frontend dependencies
+│   │
+│   └── template/                      # Static landing pages
+│       ├── index.html                 # Marketing page template
+│       └── style.css                  # Custom styling
+│
+├── DevOps Documentation (docs/)
+│   ├── DEPLOYMENT-SUMMARY.md          # Complete deployment architecture guide
+│   ├── KUBERNETES-DEPLOYMENT-GUIDE.md # Step-by-step Kubernetes setup
+│   ├── README-AWS-SETUP.md            # AWS services configuration guide
+│   ├── README-KUBERNETES.md           # Kubernetes best practices
+│   ├── FEATURE-SUMMARY.md             # Platform capabilities overview
+│   └── KEY-CODE-SNIPPETS.js           # Critical implementation patterns
+│
+├── Architecture Visualization (svg/)
+│   ├── cicd.drawio.svg                # CI/CD pipeline architecture
+│   ├── infra_aws.drawio.svg           # AWS cloud infrastructure design
+│   ├── k8s.drawio.svg                 # Kubernetes cluster topology
+│   ├── ci.drawio.svg                  # Continuous integration workflow
+│   ├── cd.drawio.svg                  # Continuous deployment process
+│   └── Cicd_kh.drawio.svg             # End-to-end DevOps pipeline
+│
+└── Deployment Configurations
+    ├── docker-compose.yaml            # Local development environment
+    ├── Procfile                       # Heroku PaaS deployment configuration
+    └── .env.example                   # Environment variables template
+```
+
+## Technology Stack
+
+### Infrastructure & DevOps
+- **Terraform** - Infrastructure as Code for AWS resource provisioning
+- **Ansible** - Configuration management and server automation
+- **Docker** - Application containerization with multi-stage builds
+- **Kubernetes** - Container orchestration and service mesh
+- **Jenkins** - CI/CD pipeline automation with shared libraries
+- **ArgoCD** - GitOps-based continuous deployment
+- **NGINX** - Reverse proxy, load balancer, and ingress controller
+
+### Cloud Services (AWS)
+- **Amazon EKS** - Managed Kubernetes service
+- **Amazon ECR** - Container image registry
+- **Amazon S3** - Object storage for files and backups
+- **Amazon VPC** - Virtual private cloud networking
+- **AWS CloudWatch** - Monitoring, logging, and alerting
+- **AWS Backup** - Automated backup and disaster recovery
+- **Certificate Manager** - SSL/TLS certificate management
+
+### Application Stack (MERN)
+- **React 16.12.0** - Frontend user interface library
+- **Redux** - State management for React applications
+- **Node.js** - JavaScript runtime environment
+- **Express.js** - Web application framework
+- **MongoDB** - NoSQL document database
+- **Mongoose** - MongoDB object document mapper
+
+### Monitoring & Observability
+- **AWS CloudWatch** - Metrics collection, logging, and alerting
+- **AWS X-Ray** - Distributed tracing and performance insights
+- **Trivy** - Container vulnerability scanning
+- **Discord Integration** - Real-time notifications and alerts
+
+### Infrastructure Deployment
+
+1. **Provision AWS Infrastructure**
+   ```bash
+   cd Terraform
+   terraform init
+   terraform plan
+   terraform apply
+   ```
+
+2. **Configure Servers with Ansible**
+   ```bash
+   cd Ansible
+   ansible-playbook -i my_inventory.ini roles_playbook.yml
+   ```
+
+3. **Deploy to Kubernetes**
+   ```bash
+   cd k8s
+   kubectl apply -f namespace.yaml
+   kubectl apply -f .
+   ```
+
+4. **Setup GitOps with ArgoCD**
+   ```bash
+   cd argoCD
+   kubectl apply -f application.yaml
+   ```
+
+### Local Development
+
+1. **Clone and Setup**
+   ```bash
+   git clone <repository-url>
+   cd ITI-Project
+   cp .env.example .env
+   ```
+
+2. **Start Development Environment**
+   ```bash
+   docker-compose up -d
+   ```
+
+3. **Access Applications**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5000
+   - MongoDB: localhost:27017
+
+## Deployment Strategies
+
+### Production Deployment on AWS EKS
+
+The project supports multiple deployment strategies:
+
+1. **Blue-Green Deployment** - Zero-downtime deployments with traffic switching
+2. **Rolling Updates** - Gradual replacement of application instances
+3. **Canary Releases** - Gradual traffic shifting to new versions
+4. **GitOps Workflow** - Automated deployment triggered by Git commits
+
+### Infrastructure Automation
+
+- **Terraform Modules** provide reusable infrastructure components
+- **Ansible Roles** automate server configuration and software installation
+- **Jenkins Pipeline** orchestrates the entire CI/CD workflow
+- **ArgoCD** ensures cluster state matches Git repository declarations
+
+## Monitoring & Observability
+
+### Comprehensive Monitoring Stack
+
+- **Application Performance Monitoring** - Response times, error rates, throughput
+- **Infrastructure Monitoring** - CPU, memory, disk, network metrics
+- **Business Metrics** - User engagement, conversion rates, revenue tracking
+- **Security Monitoring** - Vulnerability scanning, compliance checking
+- **Log Aggregation** - Centralized logging with AWS CloudWatch
+
+### Alerting & Notifications
+
+- **AWS CloudWatch Alarms** - Intelligent alert routing and infrastructure monitoring
+- **Discord Webhooks** - Real-time build and deployment notifications
+- **AWS Systems Manager** - Automated operational tasks and notifications
+- **CloudWatch Dashboards** - Visual monitoring and trending
+
+## Security Implementation
+
+### Multi-Layer Security Approach
+
+- **Network Security** - VPC isolation, security groups, NACLs
+- **Container Security** - Trivy vulnerability scanning, minimal base images
+- **Secrets Management** - Kubernetes secrets, AWS Systems Manager
+- **SSL/TLS Encryption** - Automated certificate management
+- **Access Control** - RBAC for Kubernetes, IAM for AWS resources
+- **Compliance** - Security best practices and regular auditing
+
+### Prerequisites
+- AWS CLI configured with appropriate permissions
+- Terraform >= 1.0
+- Ansible >= 2.9
+- Docker and Docker Compose
+- kubectl for Kubernetes management
+- Git for version control
 
 #### Continuous Integration
 ![Continuous Integration](./svg/ci.drawio.svg)
@@ -81,7 +321,9 @@ ITI-Project/
 │   │
 │   └── GitOps & Monitoring
 │       ├── argocd-ingress.yaml         # ArgoCD GitOps UI access
-│       ├── monitoring.yaml             # Prometheus & Grafana stack
+│   ├── GitOps & Monitoring
+│   │   ├── monitoring.yaml             # AWS CloudWatch monitoring stack
+│   │   └── seed-products-job.yaml      # Database initialization job
 │       └── seed-products-job.yaml      # Database initialization job
 │
 ├── Cloud Infrastructure (deployment/)
@@ -90,9 +332,9 @@ ITI-Project/
 │   │   ├── ecr-repositories.yaml       # Container registry configuration
 │   │   └── cloudformation/             # Infrastructure as Code templates
 │   │
-│   └── digitalocean/
-│       ├── cluster-config.yaml         # DOKS cluster specifications
-│       └── load-balancer.yaml          # Cloud load balancer setup
+│   └── eks/
+│       ├── cluster-config.yaml         # EKS cluster specifications
+│       └── load-balancer.yaml          # AWS load balancer setup
 │
 ├── DevOps Documentation (docs/)
 │   ├── Operations Guides
@@ -159,7 +401,7 @@ ITI-Project/
 
 ### DevOps & Infrastructure
 - **Docker** - Multi-stage containerization for both frontend and backend
-- **Kubernetes** - Production-ready orchestration with DigitalOcean DOKS
+- **Kubernetes** - Production-ready orchestration with Amazon EKS
 - **Jenkins** - Comprehensive CI/CD pipeline with shared libraries
 - **ArgoCD** - GitOps-based continuous deployment
 - **Prometheus** - Application and infrastructure monitoring
@@ -171,7 +413,7 @@ ITI-Project/
 ### Cloud Services & Storage
 - **AWS S3** - Scalable file storage for product images
 - **AWS ECR** - Container registry for Docker images
-- **DigitalOcean** - Kubernetes cluster hosting and management
+- **Amazon EKS** - Kubernetes cluster hosting and management
 - **MongoDB** - Primary database (local or Atlas)
 - **Persistent Volumes** - Kubernetes persistent storage for data
 
@@ -373,21 +615,21 @@ The project includes comprehensive monitoring and observability setup:
 
 ### Accessing Monitoring
 ```bash
-# Port forward to access Prometheus
-kubectl port-forward svc/prometheus-server 9090:80 -n monitoring
+# Access CloudWatch Dashboard
+aws cloudwatch get-dashboard --dashboard-name ecommerce-dashboard
 
-# Port forward to access Grafana
-kubectl port-forward svc/grafana 3000:80 -n monitoring
+# View application logs
+aws logs describe-log-groups --log-group-name-prefix /aws/eks/ecommerce
 
-# Default Grafana credentials
-Username: admin
-Password: admin (change on first login)
+# Monitor cluster metrics
+kubectl top nodes
+kubectl top pods -n ecommerce
 ```
 
 ### Log Management
-- **Centralized Logging** - Application and system logs
-- **Log Aggregation** - ELK stack integration ready
-- **Error Tracking** - Structured error logging and alerting
+- **Centralized Logging** - Application and system logs with AWS CloudWatch
+- **Log Aggregation** - CloudWatch Logs Insights for log analysis
+- **Error Tracking** - Structured error logging and automated alerting
 
 ## CI/CD Pipeline
 
