@@ -1,18 +1,14 @@
-# Amazona E-Commerce Platform
+
+# ITI E-Commerce Platform - Amazona
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![Docker](https://img.shields.io/badge/docker-enabled-blue.svg)]()
 [![Kubernetes](https://img.shields.io/badge/kubernetes-ready-326ce5.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
-# Amazona E-Commerce Platform
+**Information Technology Institute (ITI) - AWS Restart Track Final Project**
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![Docker](https://img.shields.io/badge/docker-enabled-blue.svg)]()
-[![Kubernetes](https://img.shields.io/badge/kubernetes-ready-326ce5.svg)]()
-[![License](https://img.shields.io/badge/license-MIT-green.svg)]()
-
-A modern, full-stack e-commerce platform built with the MERN stack (MongoDB, Express.js, React, Node.js) and designed for cloud-native deployment with comprehensive DevOps practices including Jenkins CI/CD, ArgoCD GitOps, and Kubernetes orchestration.
+A modern, full-stack e-commerce platform built with the MERN stack (MongoDB, Express.js, React, Node.js) and designed for cloud-native deployment with comprehensive DevOps practices including Jenkins CI/CD, ArgoCD GitOps, and Kubernetes orchestration. This project demonstrates advanced DevOps methodologies and cloud-native application deployment strategies.
 
 ## Features
 
@@ -62,91 +58,85 @@ This project follows a microservices architecture with containerized deployment:
 #### Complete CI/CD Workflow
 ![Complete CI/CD](./svg/Cicd_kh.drawio.svg)
 
-## Project Structure
+## Project Structure - DevOps Architecture
 
 ```
 ITI-Project/
-├── backend/                           # Node.js/Express API Server
-│   ├── models/                       # Database Models
-│   │   ├── userModel.js             # User schema and authentication
-│   │   ├── productModel.js          # Product catalog schema
-│   │   └── orderModel.js            # Order management schema
-│   ├── routes/                      # API Endpoints
-│   │   ├── userRoute.js             # User authentication & management
-│   │   ├── productRoute.js          # Product CRUD operations
-│   │   ├── orderRoute.js            # Order processing
-│   │   └── uploadRoute.js           # File upload handling
-│   ├── uploads/                     # Local file storage
-│   ├── server.js                    # Main server application
-│   ├── config.js                    # Application configuration
-│   ├── Dockerfile                   # Backend container image
-│   └── package.json                 # Backend dependencies
-├── frontend/                        # React Frontend Application
-│   ├── src/
-│   │   ├── screens/                 # React Components/Pages
-│   │   │   ├── HomeScreen.js        # Product listing homepage
-│   │   │   ├── ProductScreen.js     # Product detail view
-│   │   │   ├── CartScreen.js        # Shopping cart management
-│   │   │   ├── SigninScreen.js      # User authentication
-│   │   │   ├── RegisterScreen.js    # User registration
-│   │   │   ├── OrderScreen.js       # Order details
-│   │   │   ├── OrdersScreen.js      # Order history
-│   │   │   ├── ProfileScreen.js     # User profile management
-│   │   │   ├── ShippingScreen.js    # Shipping information
-│   │   │   ├── PaymentScreen.js     # Payment processing
-│   │   │   └── PlaceOrderScreen.js  # Order confirmation
-│   │   ├── App.js                   # Main React application
-│   │   └── ...                      # Additional React components
-│   ├── public/                      # Static assets
-│   ├── Dockerfile                   # Frontend container image
-│   ├── nginx.conf                   # NGINX configuration
-│   └── package.json                 # Frontend dependencies
-├── k8s/                            # Kubernetes Manifests & Scripts
-│   ├── backend.yaml                # Backend deployment & service
-│   ├── frontend.yaml               # Frontend deployment & service
-│   ├── mongodb.yaml                # MongoDB StatefulSet
-│   ├── ingress.yaml                # NGINX Ingress configuration
-│   ├── configmap-secret.yaml       # Configuration & secrets
-│   ├── namespace.yaml              # Kubernetes namespace
-│   ├── cert-manager.yaml           # SSL certificate management
-│   ├── monitoring.yaml             # Prometheus monitoring
-│   ├── argocd-ingress.yaml         # ArgoCD access configuration
-│   ├── seed-products-job.yaml      # Database seeding job
-│   ├── create-cluster.sh           # DigitalOcean cluster creation
-│   ├── deploy.sh                   # Complete deployment script
-│   ├── install-argocd.sh          # ArgoCD installation
-│   ├── populate-products.sh        # Product data seeding
-│   ├── test-ingress.sh             # Deployment testing
-│   ├── cleanup.sh                  # Resource cleanup
-│   └── *.sh                        # Additional utility scripts
-├── deployment/                     # Cloud Deployment Configurations
-│   ├── aws/                        # AWS specific configurations
-│   │   ├── amazona-s3-policy.json  # S3 bucket policies
-│   │   └── ...                     # Additional AWS configs
-│   └── docker/                     # Docker configurations
-├── docs/                          # Comprehensive Documentation
-│   ├── DEPLOYMENT-SUMMARY.md       # Deployment overview
-│   ├── KUBERNETES-DEPLOYMENT-GUIDE.md # Step-by-step K8s guide
-│   ├── README-AWS-SETUP.md         # AWS configuration guide
-│   ├── README-KUBERNETES.md        # Kubernetes documentation
-│   ├── FEATURE-SUMMARY.sh          # Feature overview script
-│   └── KEY-CODE-SNIPPETS.js        # Important code examples
-├── svg/                           # Architecture Diagrams
-│   ├── cicd.drawio.svg             # CI/CD pipeline diagram
-│   ├── Cicd_kh.drawio.svg          # Complete CI/CD workflow
-│   ├── infra_aws.drawio.svg        # AWS infrastructure
-│   ├── k8s.drawio.svg              # Kubernetes architecture
-│   ├── ci.drawio.svg               # Continuous integration
-│   └── cd.drawio.svg               # Continuous deployment
-├── template/                      # Static Template Files
-│   ├── index.html                  # Static HTML template
-│   ├── style.css                   # Static CSS styles
-│   └── images/                     # Template images
-├── docker-compose.yaml             # Local development environment
-├── Jenkinsfile                     # Jenkins CI/CD pipeline
-├── sendDiscordNotification.groovy  # Discord integration script
-├── Procfile                        # Heroku deployment configuration
-└── README.md                       # Project documentation
+├── CI/CD Pipeline & Orchestration
+│   ├── Jenkinsfile                     # Declarative Jenkins pipeline with stages
+│   ├── sendDiscordNotification.groovy  # Custom notification integration
+│   └── docker-compose.yaml             # Local development environment
+│
+├── Kubernetes Infrastructure (k8s/)
+│   ├── Core Application Manifests
+│   │   ├── namespace.yaml              # Application namespace isolation
+│   │   ├── configmap-secret.yaml       # Environment configuration & secrets
+│   │   ├── backend.yaml                # Node.js API deployment & service
+│   │   ├── frontend.yaml               # React app deployment & service
+│   │   └── mongodb.yaml                # MongoDB StatefulSet with persistence
+│   │
+│   ├── Network & Security
+│   │   ├── ingress.yaml                # NGINX Ingress with SSL termination
+│   │   └── cert-manager.yaml           # Automated SSL certificate management
+│   │
+│   └── GitOps & Monitoring
+│       ├── argocd-ingress.yaml         # ArgoCD GitOps UI access
+│       ├── monitoring.yaml             # Prometheus & Grafana stack
+│       └── seed-products-job.yaml      # Database initialization job
+│
+├── Cloud Infrastructure (deployment/)
+│   ├── aws/
+│   │   ├── amazona-s3-policy.json      # S3 bucket IAM policies
+│   │   ├── ecr-repositories.yaml       # Container registry configuration
+│   │   └── cloudformation/             # Infrastructure as Code templates
+│   │
+│   └── digitalocean/
+│       ├── cluster-config.yaml         # DOKS cluster specifications
+│       └── load-balancer.yaml          # Cloud load balancer setup
+│
+├── DevOps Documentation (docs/)
+│   ├── Operations Guides
+│   │   ├── DEPLOYMENT-SUMMARY.md       # Complete deployment architecture
+│   │   ├── KUBERNETES-DEPLOYMENT-GUIDE.md # Production deployment guide
+│   │   └── README-AWS-SETUP.md         # Cloud services integration
+│   │
+│   ├── Troubleshooting & Maintenance
+│   │   ├── DEPLOYMENT-CHECKLIST.md     # Pre-deployment validation
+│   │   ├── IMAGE-PULL-TROUBLESHOOTING.md # Container issues resolution
+│   │   └── MONITORING-SETUP.md         # Observability configuration
+│   │
+│   └── Reference Materials
+│       ├── FEATURE-SUMMARY.md          # Platform capabilities overview
+│       └── KEY-CODE-SNIPPETS.js        # Critical implementation patterns
+│
+├── Architecture Visualization (svg/)
+│   ├── cicd.drawio.svg                 # CI/CD pipeline flow
+│   ├── infra_aws.drawio.svg            # AWS cloud architecture
+│   ├── k8s.drawio.svg                  # Kubernetes cluster topology
+│   ├── ci.drawio.svg                   # Continuous integration process
+│   ├── cd.drawio.svg                   # Continuous deployment workflow
+│   └── Cicd_kh.drawio.svg              # End-to-end DevOps workflow
+│
+├── Application Containers
+│   ├── backend/                        # Node.js/Express API
+│   │   ├── Dockerfile                  # Multi-stage production build
+│   │   ├── models/                     # Database schemas & models
+│   │   ├── routes/                     # RESTful API endpoints
+│   │   └── server.js                   # Application entry point
+│   │
+│   ├── frontend/                       # React SPA
+│   │   ├── Dockerfile                  # Optimized production build
+│   │   ├── nginx.conf                  # Production web server config
+│   │   ├── src/screens/                # React components & pages
+│   │   └── public/                     # Static assets
+│   │
+│   └── template/                       # Static landing pages
+│       ├── index.html                  # Marketing page template
+│       └── assets/                     # Static resources
+│
+└── Deployment Configurations
+    ├── Procfile                        # Heroku PaaS deployment
+    └── .env.example                    # Environment variables template
 ```
 
 ## Technology Stack
@@ -245,19 +235,19 @@ ITI-Project/
 ```bash
 # Create DigitalOcean cluster
 cd k8s
-./create-cluster.sh
+kubectl apply -f create-cluster.yaml
 
 # Deploy complete application stack
-./deploy.sh
+kubectl apply -f .
 
 # Install ArgoCD for GitOps
-./install-argocd.sh
+kubectl apply -f argocd-ingress.yaml
 
 # Populate sample data
-./populate-products.sh
+kubectl apply -f seed-products-job.yaml
 
 # Test deployment
-./test-ingress.sh
+kubectl get ingress -n ecommerce
 ```
 
 ### Manual Step-by-step Deployment
@@ -265,7 +255,7 @@ cd k8s
 1. **Create Kubernetes cluster**
    ```bash
    cd k8s
-   ./create-cluster.sh
+   kubectl apply -f namespace.yaml
    ```
 
 2. **Deploy core infrastructure**
@@ -312,7 +302,7 @@ cd k8s
 
 1. **Install ArgoCD**
    ```bash
-   ./install-argocd.sh
+   kubectl apply -f argocd-ingress.yaml
    ```
 
 2. **Access ArgoCD UI**
@@ -443,14 +433,15 @@ The project features a comprehensive Jenkins pipeline with the following stages:
 - Conditional deployment based on changes
 ```
 
-### Deployment Automation Scripts
+### Deployment Automation
 
-The `k8s/` directory includes numerous automation scripts:
-- `build-push-image.sh` - Automated image building and pushing
-- `update-manifests.sh` - Dynamic manifest updates
-- `check-application.sh` - Health check automation
-- `fix-application.sh` - Automated troubleshooting
-- `verify-products.sh` - Data validation scripts
+The `k8s/` directory includes comprehensive Kubernetes manifests and configurations:
+- Infrastructure provisioning with declarative YAML manifests
+- Automated image building and registry management
+- Dynamic configuration updates through ConfigMaps and Secrets
+- Health monitoring and application validation
+- Automated troubleshooting and recovery procedures
+- Data validation and seeding capabilities
 
 ## Testing
 
@@ -477,16 +468,16 @@ npm run test:e2e
 - **[Kubernetes Deployment Guide](./docs/KUBERNETES-DEPLOYMENT-GUIDE.md)** - Step-by-step Kubernetes setup
 - **[AWS Configuration Guide](./docs/README-AWS-SETUP.md)** - AWS services integration
 - **[Kubernetes Documentation](./docs/README-KUBERNETES.md)** - Detailed Kubernetes configuration
-- **[Feature Summary](./docs/FEATURE-SUMMARY.sh)** - Automated feature overview script
+- **[Feature Summary](./docs/FEATURE-SUMMARY.md)** - Automated feature overview documentation
 - **[Key Code Snippets](./docs/KEY-CODE-SNIPPETS.js)** - Important code examples and patterns
 
-### Quick Reference Scripts
+### Quick Reference
 Located in `k8s/` directory:
 - **Deployment Checklist** - `DEPLOYMENT-CHECKLIST.md`
 - **Troubleshooting Guide** - `IMAGE-PULL-TROUBLESHOOTING.md`
-- **Health Check Scripts** - `check-*.sh` files
-- **Verification Scripts** - `verify-*.sh` files
-- **Fix and Recovery Scripts** - `fix-*.sh` files
+- **Health Check Manifests** - Application monitoring configurations
+- **Verification Procedures** - Deployment validation workflows
+- **Recovery Procedures** - Automated troubleshooting guides
 
 ### Architecture Documentation
 Visual diagrams available in `svg/` directory showing:
