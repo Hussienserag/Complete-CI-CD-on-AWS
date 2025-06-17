@@ -64,7 +64,7 @@ This project demonstrates a complete DevOps lifecycle implementation:
 ![Continuous Deployment](./svg/cd.drawio.svg)
 
 ### Complete DevOps Workflow
-![Complete CI/CD Workflow](./svg/Cicd_kh.drawio.svg)
+![Complete CI/CD Workflow](./svg/Cidi_kh.drawio.svg)
 
 ## Project Structure - DevOps Architecture
 
