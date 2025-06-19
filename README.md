@@ -115,6 +115,44 @@ This project demonstrates a complete DevOps lifecycle implementation:
 
 ---
 
+## Component Documentation
+
+This project includes comprehensive documentation for each major component. Each document provides detailed explanations, configuration details, and implementation guides.
+
+<div align="center">
+
+| Component | Documentation | Description |
+|-----------|---------------|-------------|
+| ![Terraform](https://img.shields.io/badge/Terraform-623CE4?style=flat&logo=terraform&logoColor=white) | [**Infrastructure as Code**](docs/TERRAFORM-INFRASTRUCTURE.md) | Complete Terraform modules, AWS resource provisioning, and infrastructure management |
+| ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white) | [**Configuration Management**](docs/ANSIBLE-CONFIGURATION.md) | Ansible playbooks, roles, and automation for system configuration |
+| ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white) | [**Kubernetes Manifests**](docs/KUBERNETES-MANIFESTS.md) | K8s deployments, services, ingress, monitoring, and EKS optimization |
+| ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white) | [**CI/CD Pipeline**](docs/CICD-PIPELINE.md) | Jenkins pipeline configuration, shared libraries, and automation workflows |
+| ![Code](https://img.shields.io/badge/Application-4CAF50?style=flat&logo=code&logoColor=white) | [**Application Source Code**](docs/APPLICATION-SOURCE-CODE.md) | MERN stack architecture, API documentation, and component structure |
+| ![ArgoCD](https://img.shields.io/badge/ArgoCD-EF7B4D?style=flat&logo=argo&logoColor=white) | [**GitOps & ArgoCD**](docs/GITOPS-ARGOCD.md) | GitOps principles, ArgoCD configuration, and continuous deployment |
+| ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) | [**Docker Configuration**](docs/DOCKER-CONFIGURATION.md) | Containerization strategy, multi-stage builds, and registry management |
+| ![Scripts](https://img.shields.io/badge/Scripts-FF6B6B?style=flat&logo=gnu-bash&logoColor=white) | [**Scripts & Automation**](docs/SCRIPTS-AUTOMATION.md) | Deployment scripts, utilities, and automation tools |
+
+</div>
+
+### Documentation Highlights
+
+- **📋 Comprehensive Guides**: Each document includes step-by-step instructions and best practices
+- **🔧 Configuration Details**: Complete configuration files with explanations
+- **💡 Troubleshooting**: Common issues and their solutions
+- **🚀 Quick Start**: Fast deployment guides for each component
+- **🔒 Security**: Security best practices and compliance guidelines
+- **📊 Monitoring**: Observability and monitoring configurations
+
+### Getting Started with Documentation
+
+1. **For Infrastructure Setup**: Start with [Terraform Infrastructure](docs/TERRAFORM-INFRASTRUCTURE.md)
+2. **For Application Development**: Check [Application Source Code](docs/APPLICATION-SOURCE-CODE.md)
+3. **For Deployment**: Follow [Kubernetes Manifests](docs/KUBERNETES-MANIFESTS.md) and [CI/CD Pipeline](docs/CICD-PIPELINE.md)
+4. **For GitOps**: Implement [GitOps & ArgoCD](docs/GITOPS-ARGOCD.md)
+5. **For Automation**: Use [Scripts & Automation](docs/SCRIPTS-AUTOMATION.md)
+
+---
+
 ## Architecture Diagrams
 
 <div align="center">
