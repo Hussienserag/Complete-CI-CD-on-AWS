@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: public.ecr.aws/b0b6i8m2/iti-project-backend:1.0.6
+        image: public.ecr.aws/b0b6i8m2/iti-project-backend:1.0.7
         ports:
         - containerPort: 5000
           name: http
