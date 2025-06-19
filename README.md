@@ -144,6 +144,9 @@ This project demonstrates a complete DevOps lifecycle implementation:
 
 ## Project Structure
 
+<details>
+<summary><strong>Click to expand/collapse DevOps Architecture Structure</strong></summary>
+
 ### DevOps Architecture Structure
 
 ```
@@ -230,6 +233,8 @@ ITI-Project/
     ├── Procfile                       # Heroku PaaS deployment configuration
     └── .env.example                   # Environment variables template
 ```
+
+</details>
 
 ---
 
@@ -641,7 +646,6 @@ This comprehensive DevOps project was developed by a talented team of engineers 
 <sub><b>Khaled Hawil</b></sub>
 </a><br />
 <em>DevOps Engineer</em><br />
-<small>Infrastructure & CI/CD</small>
 </td>
 <td align="center">
 <a href="https://github.com/AbdelrahmanElshahat">
@@ -649,7 +653,6 @@ This comprehensive DevOps project was developed by a talented team of engineers 
 <sub><b>Abdelrahman Elshahat</b></sub>
 </a><br />
 <em>DevOps Engineer</em><br />
-<small>Kubernetes & Monitoring</small>
 </td>
 <td align="center">
 <a href="https://github.com/MennaHamouda">
@@ -657,7 +660,6 @@ This comprehensive DevOps project was developed by a talented team of engineers 
 <sub><b>Menna Hamouda</b></sub>
 </a><br />
 <em>DevOps Engineer</em><br />
-<small>Configuration Management</small>
 </td>
 </tr>
 <tr>
@@ -667,7 +669,6 @@ This comprehensive DevOps project was developed by a talented team of engineers 
 <sub><b>Alaa Elnagy</b></sub>
 </a><br />
 <em>DevOps Engineer</em><br />
-<small>Security & Compliance</small>
 </td>
 <td align="center">
 <a href="https://github.com/saraghonim">
@@ -675,7 +676,6 @@ This comprehensive DevOps project was developed by a talented team of engineers 
 <sub><b>Sara Ghonim</b></sub>
 </a><br />
 <em>DevOps Engineer</em><br />
-<small>Monitoring & Observability</small>
 </td>
 <td align="center">
 <br />
