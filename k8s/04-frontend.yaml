@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: public.ecr.aws/b0b6i8m2/iti-project-frontend:latest  # Use latest for auto-updates
+        image: public.ecr.aws/b0b6i8m2/iti-project-frontend:0.1.2
         ports:
         - containerPort: 80
           name: http
