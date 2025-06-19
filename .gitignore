@@ -35,3 +35,16 @@ yarn-lock.json
 frontend/package-lock.json
 frontend/yarn-lock.json
 *.sh
+k88s/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+*.tfplan
+*.tfplan.json  
+*backup
+*backup.*
+*.log
+*.bak
+*.swp
+*.swo

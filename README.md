@@ -23,9 +23,22 @@
   Built with the MERN stack and deployed using Infrastructure as Code (Terraform), Configuration Management (Ansible), Container Orchestration (Kubernetes), CI/CD automation (Jenkins), and GitOps workflows (ArgoCD).
 </p>
 
+### DevOps Platform Banner
+```
+    ██╗████████╗██╗    ██████╗ ███████╗██╗   ██╗ ██████╗ ██████╗ ███████╗
+    ██║╚══██╔══╝██║    ██╔══██╗██╔════╝██║   ██║██╔═══██╗██╔══██╗██╔════╝
+    ██║   ██║   ██║    ██║  ██║█████╗  ██║   ██║██║   ██║██████╔╝███████╗
+    ██║   ██║   ██║    ██║  ██║██╔══╝  ╚██╗ ██╔╝██║   ██║██╔═══╝ ╚════██║
+    ██║   ██║   ██║    ██████╔╝███████╗ ╚████╔╝ ╚██████╔╝██║     ███████║
+    ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝  ╚═══╝   ╚═════╝ ╚═╝     ╚══════╝
+    
+    E-Commerce DevOps Infrastructure Deployment
+```
+
 ---
 
 </div>
+
 
 ## Table of Contents
 
@@ -116,18 +129,6 @@ This project demonstrates a complete DevOps lifecycle implementation:
 ### Kubernetes Cluster Topology
 ![Kubernetes Architecture](./svg/k8s.drawio.svg)
 
-### DevOps Platform Banner
-```
-    ██╗████████╗██╗    ██████╗ ███████╗██╗   ██╗ ██████╗ ██████╗ ███████╗
-    ██║╚══██╔══╝██║    ██╔══██╗██╔════╝██║   ██║██╔═══██╗██╔══██╗██╔════╝
-    ██║   ██║   ██║    ██║  ██║█████╗  ██║   ██║██║   ██║██████╔╝███████╗
-    ██║   ██║   ██║    ██║  ██║██╔══╝  ╚██╗ ██╔╝██║   ██║██╔═══╝ ╚════██║
-    ██║   ██║   ██║    ██████╔╝███████╗ ╚████╔╝ ╚██████╔╝██║     ███████║
-    ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝  ╚═══╝   ╚═════╝ ╚═╝     ╚══════╝
-    
-    E-Commerce DevOps Infrastructure Deployment
-```
-
 ### Continuous Integration Flow
 ![Continuous Integration](./svg/ci.drawio.svg)
 
@@ -135,7 +136,7 @@ This project demonstrates a complete DevOps lifecycle implementation:
 ![Continuous Deployment](./svg/cd.drawio.svg)
 
 ### Complete DevOps Workflow
-![Complete CI/CD Workflow](./svg/Cicd_kh.drawio.svg)
+![Complete CI/CD Workflow](./svg/Cidi_kh.drawio.svg)
 
 </div>
 
@@ -821,18 +822,6 @@ When reporting bugs, please include:
 | **CI/CD Optimizations** | Medium | Jenkins, GitOps |
 | **Documentation** | High | Technical Writing |
 | **Testing Coverage** | Medium | Testing, Automation |
-
-</div>
-
----
-
-## License
-
-<div align="center">
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 </div>
 

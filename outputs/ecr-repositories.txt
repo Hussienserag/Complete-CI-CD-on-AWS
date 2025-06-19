@@ -1,9 +1,0 @@
-ECR Repositories Information
-============================
-Frontend Repository: public.ecr.aws/b0b6i8m2/iti-project-frontend
-Backend Repository: public.ecr.aws/b0b6i8m2/iti-project-backend
-
-Docker Login Command:
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/b0b6i8m2/iti-project-frontend
-
-Generated at: 2025-06-19T05:22:55Z
