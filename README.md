@@ -54,7 +54,6 @@
 - [Security Implementation](#security-implementation)
 - [Team](#team)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -118,6 +117,9 @@ This project demonstrates a complete DevOps lifecycle implementation:
 
 ## Architecture Diagrams
 
+<details>
+<summary><strong>Click to expand/collapse Architecture Diagrams</strong></summary>
+
 <div align="center">
 
 ### CI/CD Pipeline Architecture
@@ -139,6 +141,8 @@ This project demonstrates a complete DevOps lifecycle implementation:
 ![Complete CI/CD Workflow](./svg/Cidi_kh.drawio.svg)
 
 </div>
+
+</details>
 
 ---
 
