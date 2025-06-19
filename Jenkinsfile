@@ -69,7 +69,7 @@ pipeline{
                 script {
                     dir('backend'){
                     def version = getVersionFromPackageJson()
-                    buildImage "public.ecr.aws/w2s7s2g7/iti-project-backend:${version}"
+                    buildImage "public.ecr.aws/b0b6i8m2/iti-project-backend:${version}"
                     }
                 }
             }
@@ -88,7 +88,7 @@ pipeline{
                 script {
                     dir('frontend') {
                         def version = getVersionFromPackageJson()
-                        buildImage "public.ecr.aws/w2s7s2g7/iti-project-frontend:${version}"
+                        buildImage "public.ecr.aws/b0b6i8m2/iti-project-frontend:${version}"
                     }
                 }
             }
@@ -104,7 +104,7 @@ pipeline{
                 script {
                     dir('frontend') {
                     def version = getVersionFromPackageJson()
-                    dockerPush "public.ecr.aws/w2s7s2g7/iti-project-frontend:${version}"
+                    dockerPush "public.ecr.aws/b0b6i8m2/iti-project-frontend:${version}"
                     }
                 }
             }
@@ -120,7 +120,7 @@ pipeline{
                 script {
                     dir('backend') {
                     def version = getVersionFromPackageJson()
-                    dockerPush "public.ecr.aws/w2s7s2g7/iti-project-backend:${version}"
+                    dockerPush "public.ecr.aws/b0b6i8m2/iti-project-backend:${version}"
                     }
                 }
             }
@@ -140,7 +140,7 @@ pipeline{
                     }
                     dir('k8s') {
                         sh """
-                            sed -i 's|image: public.ecr.aws/w2s7s2g7/iti-project-backend:.*|image: public.ecr.aws/w2s7s2g7/iti-project-backend:${version}|' 03-backend.yaml
+                            sed -i 's|image: public.ecr.aws/b0b6i8m2/iti-project-backend:.*|image: public.ecr.aws/b0b6i8m2/iti-project-backend:${version}|' 03-backend.yaml
                         """
                     }
                 }
@@ -161,7 +161,7 @@ pipeline{
                     }
                     dir('k8s') {
                         sh """
-                            sed -i 's|image: public.ecr.aws/w2s7s2g7/iti-project-frontend:.*|image: public.ecr.aws/w2s7s2g7/iti-project-frontend:${version}|' 04-frontend.yaml
+                            sed -i 's|image: public.ecr.aws/b0b6i8m2/iti-project-frontend:.*|image: public.ecr.aws/b0b6i8m2/iti-project-frontend:${version}|' 04-frontend.yaml
                         """
                     }
                 }
