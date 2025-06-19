@@ -1,0 +1,66 @@
+{
+  "ecr_backend_repository": {
+    "sensitive": false,
+    "type": "string",
+    "value": "public.ecr.aws/b0b6i8m2/iti-project-backend"
+  },
+  "ecr_frontend_repository": {
+    "sensitive": false,
+    "type": "string",
+    "value": "public.ecr.aws/b0b6i8m2/iti-project-frontend"
+  },
+  "eks_cluster_endpoint": {
+    "sensitive": false,
+    "type": "string",
+    "value": "https://474741B934091C4E5D429005185D91DF.gr7.us-east-1.eks.amazonaws.com"
+  },
+  "eks_cluster_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "eks-cluster"
+  },
+  "jenkins_custom_policies": {
+    "sensitive": false,
+    "type": [
+      "object",
+      {
+        "eks_additional_policy": "string",
+        "kubernetes_docker_policy": "string"
+      }
+    ],
+    "value": {
+      "eks_additional_policy": "arn:aws:iam::690169311736:policy/jenkins-eks-additional-policy",
+      "kubernetes_docker_policy": "arn:aws:iam::690169311736:policy/jenkins-kubernetes-docker-policy"
+    }
+  },
+  "jenkins_iam_role_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:iam::690169311736:role/jenkins-ec2-role"
+  },
+  "jenkins_iam_role_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "jenkins-ec2-role"
+  },
+  "jenkins_instance_profile_arn": {
+    "sensitive": false,
+    "type": "string",
+    "value": "arn:aws:iam::690169311736:instance-profile/jenkins-ec2-instance-profile"
+  },
+  "jenkins_public_ip": {
+    "sensitive": false,
+    "type": "string",
+    "value": "3.95.138.33"
+  },
+  "jenkins_ssh_command": {
+    "sensitive": false,
+    "type": "string",
+    "value": "ssh -i Modules/Jenkins_EC2_Module/Project_Keys/jenkins.pem ec2-user@3.95.138.33"
+  },
+  "vpc_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "vpc-061cf4b0120525d35"
+  }
+}

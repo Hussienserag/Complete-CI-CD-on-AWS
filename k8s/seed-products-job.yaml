@@ -4,6 +4,7 @@ metadata:
   name: seed-products-job
   namespace: ecommerce
 spec:
+  backoffLimit: 3
   template:
     spec:
       restartPolicy: OnFailure
@@ -44,4 +45,3 @@ spec:
             configMapKeyRef:
               name: ecommerce-config
               key: JWT_SECRET
-      backoffLimit: 3

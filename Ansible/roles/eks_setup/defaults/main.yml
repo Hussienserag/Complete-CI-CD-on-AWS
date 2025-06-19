@@ -1,0 +1,21 @@
+---
+# Default variables for EKS setup role
+
+# AWS Configuration
+aws_region: us-east-1
+eks_cluster_name: eks-cluster
+
+# Helm Configuration
+helm_version: v3.12.0
+
+# ArgoCD Configuration
+argocd_namespace: argocd
+argocd_chart_version: 5.46.0
+
+# NGINX Ingress Configuration
+nginx_namespace: ingress-nginx
+nginx_chart_version: 4.7.1
+
+# Timeouts (in seconds)
+cluster_ready_timeout: 300
+service_ready_timeout: 600

@@ -19,9 +19,6 @@ resource "aws_key_pair" "my_key_pair" {
      public_key = local_file.public_key.content
      depends_on = [ tls_private_key.my_key ]
 }
-output "my_key" {
-  value = aws_key_pair.my_key_pair.key_name
-}
 
 # resource "null_resource" "Change_key_permission" {
 #   depends_on = [ tls_private_key.my_key ]

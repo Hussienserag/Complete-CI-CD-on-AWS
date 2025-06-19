@@ -1,0 +1,77 @@
+# Job to seed initial product data
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: seed-products-job
+  namespace: ecommerce
+  labels:
+    app: seed-products
+    component: init
+spec:
+  backoffLimit: 3
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      labels:
+        app: seed-products
+        component: init
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: seed-products
+        image: public.ecr.aws/w2s7s2g7/iti-project-backend:latest
+        command: ["npm", "run", "seed"]
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: MONGODB_URI
+        - name: NODE_ENV
+          value: "production"
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: ecommerce-secrets
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ecommerce-secrets
+              key: AWS_SECRET_ACCESS_KEY
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: AWS_REGION
+        - name: AWS_BUCKET_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: AWS_BUCKET_NAME
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: JWT_SECRET
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+      # Only run after MongoDB is ready
+      initContainers:
+      - name: wait-for-mongodb
+        image: busybox:1.35
+        command: ['sh', '-c']
+        args:
+          - |
+            echo "Waiting for MongoDB to be ready..."
+            until nc -z mongodb-service 27017; do
+              echo "MongoDB not ready, sleeping..."
+              sleep 5
+            done
+            echo "MongoDB is ready!"

@@ -7,5 +7,5 @@ variable "Public_Subnet1_id" {
 
 variable "Ec2_Instance_Type" {
     type = string
-    default = "t2.small"
+    default = "t2.medium"
 }

@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: DevOps Team
+  description: AWS CLI Installation Role
+  company: ITI Project
+  license: MIT
+  min_ansible_version: "2.9"
+  platforms:
+    - name: Amazon
+      versions:
+        - "2018.03"
+        - "all"
+    - name: EL
+      versions:
+        - "8"
+        - "9"
+  galaxy_tags:
+    - aws
+    - cli
+    - cloud
+    - tools
+
+dependencies: []

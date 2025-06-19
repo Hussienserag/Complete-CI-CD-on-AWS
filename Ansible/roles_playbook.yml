@@ -1,4 +1,3 @@
-
 ---
 - name: Cloud_Watch_Agent_Logs_Play
   hosts: all
@@ -6,7 +5,12 @@
   roles:
     - Cloud_Watch_Agent_Installation
 
-
+- name: Install AWS CLI
+  hosts: Jenkins_EC2
+  become: true
+  gather_facts: false
+  roles:
+    - aws_cli_installation
 
 -  name: Install Jenkins on EC2
    hosts: Jenkins_EC2
@@ -37,3 +41,10 @@
   become: true
   roles:
     - trivy_installation
+
+- name: Setup EKS with Helm, ArgoCD, and Ingress
+  hosts: Jenkins_EC2
+  become: true
+  gather_facts: true
+  roles:
+    - eks_setup

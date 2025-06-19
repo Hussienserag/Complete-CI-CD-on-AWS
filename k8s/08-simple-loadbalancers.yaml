@@ -1,0 +1,37 @@
+# Simple Load Balancer for Frontend
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-lb
+  namespace: ecommerce
+  labels:
+    app: frontend
+    service-type: loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontend
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+---
+# Simple Load Balancer for Backend API
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-lb
+  namespace: ecommerce
+  labels:
+    app: backend
+    service-type: loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: backend
+  ports:
+  - name: http
+    port: 5000
+    targetPort: 5000
+    protocol: TCP

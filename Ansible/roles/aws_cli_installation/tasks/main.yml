@@ -1,0 +1,75 @@
+---
+# AWS CLI Installation Tasks
+- name: Check if AWS CLI is already installed
+  command: aws --version
+  register: aws_cli_check
+  failed_when: false
+  changed_when: false
+
+- name: Display current AWS CLI version if installed
+  debug:
+    msg: "AWS CLI is already installed: {{ aws_cli_check.stdout }}"
+  when: aws_cli_check.rc == 0
+
+- name: Install AWS CLI when not present
+  block:
+    - name: Update package cache
+      yum:
+        update_cache: yes
+      when: ansible_os_family == "RedHat"
+
+    - name: Install unzip if not present
+      package:
+        name: unzip
+        state: present
+
+    - name: Download AWS CLI v2 installer
+      get_url:
+        url: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+        dest: /tmp/awscliv2.zip
+        mode: '0644'
+
+    - name: Unzip AWS CLI installer
+      unarchive:
+        src: /tmp/awscliv2.zip
+        dest: /tmp/
+        remote_src: yes
+
+    - name: Install AWS CLI
+      command: /tmp/aws/install --update
+      args:
+        creates: /usr/local/bin/aws
+
+    - name: Create symlink for aws command in standard path
+      file:
+        src: /usr/local/bin/aws
+        dest: /usr/bin/aws
+        state: link
+      ignore_errors: true
+
+    - name: Verify AWS CLI installation
+      command: aws --version
+      register: aws_version_check
+      changed_when: false
+
+    - name: Display installed AWS CLI version
+      debug:
+        msg: "AWS CLI successfully installed: {{ aws_version_check.stdout }}"
+
+    - name: Clean up installer files
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /tmp/awscliv2.zip
+        - /tmp/aws
+      ignore_errors: true
+
+  when: aws_cli_check.rc != 0
+
+- name: Ensure AWS CLI is accessible for all users
+  lineinfile:
+    path: /etc/environment
+    line: 'PATH="/usr/local/bin:$PATH"'
+    state: present
+  when: aws_cli_check.rc != 0

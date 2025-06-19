@@ -56,7 +56,14 @@ This project demonstrates a complete DevOps lifecycle implementation:
 
 ### Kubernetes Cluster Topology
 ![Kubernetes Architecture](./svg/k8s.drawio.svg)
-
+    ██╗████████╗██╗    ██████╗ ███████╗██╗   ██╗ ██████╗ ██████╗ ███████╗
+    ██║╚══██╔══╝██║    ██╔══██╗██╔════╝██║   ██║██╔═══██╗██╔══██╗██╔════╝
+    ██║   ██║   ██║    ██║  ██║█████╗  ██║   ██║██║   ██║██████╔╝███████╗
+    ██║   ██║   ██║    ██║  ██║██╔══╝  ╚██╗ ██╔╝██║   ██║██╔═══╝ ╚════██║
+    ██║   ██║   ██║    ██████╔╝███████╗ ╚████╔╝ ╚██████╔╝██║     ███████║
+    ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝  ╚═══╝   ╚═════╝ ╚═╝     ╚══════╝
+    
+    E-Commerce DevOps Infrastructure Deployment
 ### Continuous Integration Flow
 ![Continuous Integration](./svg/ci.drawio.svg)
 

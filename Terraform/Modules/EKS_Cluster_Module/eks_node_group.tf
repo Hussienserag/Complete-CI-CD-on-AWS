@@ -11,9 +11,9 @@ resource "aws_eks_node_group" "worker-node-group" {
   disk_size = 20  # Set EBS volume size to 20GB
  
   scaling_config {
-   desired_size = 2
-   max_size   = 3
-   min_size   = 2
+   desired_size = 3
+   max_size   = 5
+   min_size   = 3
   }
    tags = {
     Name = "eks-node-group"

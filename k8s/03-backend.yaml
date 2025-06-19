@@ -1,0 +1,136 @@
+# Backend API Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: ecommerce
+  labels:
+    app: backend
+    tier: api
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+        tier: api
+    spec:
+      containers:
+      - name: backend
+        image: public.ecr.aws/b0b6i8m2/iti-project-backend:latest  # Use latest for auto-updates
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: MONGODB_URI
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: PORT
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: NODE_ENV
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: JWT_SECRET
+        - name: PAYPAL_CLIENT_ID
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: PAYPAL_CLIENT_ID
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: AWS_REGION
+        - name: AWS_BUCKET_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: ecommerce-config
+              key: AWS_BUCKET_NAME
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: ecommerce-secrets
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ecommerce-secrets
+              key: AWS_SECRET_ACCESS_KEY
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: ecommerce
+  labels:
+    app: backend
+    tier: api
+spec:
+  selector:
+    app: backend
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+    name: http
+  type: ClusterIP
+---
+# NodePort Service for testing
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-nodeport
+  namespace: ecommerce
+  labels:
+    app: backend
+    service-type: nodeport
+spec:
+  type: NodePort
+  selector:
+    app: backend
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+    nodePort: 30001

@@ -1,0 +1,11 @@
+Jenkins Access Information
+==========================
+Public IP: 3.95.138.33
+Instance ID: i-0155c755e82e602e0
+SSH Command: ssh -i Modules/Jenkins_EC2_Module/Project_Keys/jenkins.pem ec2-user@3.95.138.33
+Jenkins URL: http://3.95.138.33:8080
+IAM Role ARN: arn:aws:iam::690169311736:role/jenkins-ec2-role
+Private Key Path: Modules/Jenkins_EC2_Module/Project_Keys/jenkins.pem
+Public Key Path: Modules/Jenkins_EC2_Module/Project_Keys/jenkins.pub
+
+Generated at: 2025-06-19T05:22:55Z

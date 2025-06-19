@@ -1,0 +1,41 @@
+===============================================
+EKS CLUSTER SETUP SUMMARY
+===============================================
+
+Cluster Information:
+- Name: {{ eks_cluster_name }}
+- Region: {{ aws_region }}
+- Status: Ready
+
+Installed Components:
+✓ kubectl (Kubernetes CLI)
+✓ Helm (Package Manager)
+✓ NGINX Ingress Controller
+✓ ArgoCD (GitOps)
+
+Access Information:
+{% if argocd_endpoint.stdout is defined and argocd_endpoint.stdout != "" %}
+ArgoCD Server: 
+- URL: http://{{ argocd_endpoint.stdout }}
+- Username: admin
+- Password: {{ argocd_password.stdout }}
+{% endif %}
+
+{% if nginx_endpoint.stdout is defined and nginx_endpoint.stdout != "" %}
+NGINX Ingress Controller:
+- LoadBalancer: {{ nginx_endpoint.stdout }}
+{% endif %}
+
+Next Steps:
+1. Access ArgoCD using the URL and credentials above
+2. Configure your applications in ArgoCD
+3. Set up ingress rules for your applications
+4. Monitor your cluster using kubectl commands
+
+Commands to remember:
+- kubectl get nodes
+- kubectl get pods -A
+- helm list -A
+- kubectl get ingress -A
+
+===============================================

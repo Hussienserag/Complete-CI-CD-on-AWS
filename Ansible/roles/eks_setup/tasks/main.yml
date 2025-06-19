@@ -1,0 +1,175 @@
+---
+# EKS Setup Role - Install Helm, ArgoCD, and Ingress Controller
+
+- name: Install prerequisites
+  block:
+    - name: Install Python pip
+      yum:
+        name: python3-pip
+        state: present
+      become: true
+
+    - name: Install Python Kubernetes client
+      pip:
+        name:
+          - kubernetes
+          - pyyaml
+          - jsonpatch
+        state: present
+      become: true
+
+    - name: Install Ansible Kubernetes collection
+      ansible.builtin.command:
+        cmd: ansible-galaxy collection install kubernetes.core
+      become: false
+      ignore_errors: true
+
+- name: Install kubectl
+  get_url:
+    url: "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"
+    dest: /usr/local/bin/kubectl
+    mode: '0755'
+    owner: root
+    group: root
+  become: true
+
+- name: Install Helm
+  block:
+    - name: Download Helm installation script
+      get_url:
+        url: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+        dest: /tmp/get_helm.sh
+        mode: '0755'
+
+    - name: Install Helm
+      shell: /tmp/get_helm.sh
+      become: true
+
+    - name: Verify Helm installation
+      command: helm version --short
+      register: helm_version
+      changed_when: false
+
+    - name: Display Helm version
+      debug:
+        msg: "Helm installed: {{ helm_version.stdout }}"
+
+- name: Configure kubectl for EKS
+  block:
+    - name: Update kubeconfig for EKS cluster
+      shell: aws eks update-kubeconfig --region {{ aws_region }} --name {{ eks_cluster_name }}
+      environment:
+        AWS_DEFAULT_REGION: "{{ aws_region }}"
+
+    - name: Wait for cluster to be ready
+      shell: kubectl cluster-info
+      register: cluster_info
+      until: cluster_info.rc == 0
+      retries: 10
+      delay: 30
+
+    - name: Check nodes are ready
+      shell: kubectl get nodes --no-headers | grep -c Ready
+      register: ready_nodes
+      until: ready_nodes.stdout|int >= 1
+      retries: 15
+      delay: 30
+
+- name: Install NGINX Ingress Controller
+  block:
+    - name: Add NGINX Ingress Helm repository
+      shell: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+      
+    - name: Update Helm repositories
+      shell: helm repo update
+
+    - name: Create ingress-nginx namespace
+      shell: kubectl create namespace ingress-nginx --dry-run=client -o yaml | kubectl apply -f -
+
+    - name: Install NGINX Ingress Controller with Helm
+      shell: |
+        helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
+          --namespace ingress-nginx \
+          --set controller.service.type=LoadBalancer \
+          --set controller.metrics.enabled=true \
+          --wait --timeout=600s
+
+- name: Install ArgoCD
+  block:
+    - name: Add ArgoCD Helm repository
+      shell: helm repo add argo https://argoproj.github.io/argo-helm
+
+    - name: Update Helm repositories
+      shell: helm repo update
+
+    - name: Create argocd namespace
+      shell: kubectl create namespace argocd --dry-run=client -o yaml | kubectl apply -f -
+
+    - name: Install ArgoCD with Helm
+      shell: |
+        helm upgrade --install argocd argo/argo-cd \
+          --namespace argocd \
+          --set server.service.type=LoadBalancer \
+          --set server.extraArgs[0]="--insecure" \
+          --set configs.params."server\.insecure"=true \
+          --wait --timeout=600s
+
+    - name: Wait for ArgoCD server LoadBalancer
+      shell: |
+        for i in {1..20}; do
+          if kubectl -n argocd get service argocd-server -o jsonpath='{.status.loadBalancer.ingress[0]}' | grep -q .; then
+            echo "LoadBalancer ready"
+            break
+          fi
+          echo "Waiting for LoadBalancer... attempt $i/20"
+          sleep 30
+        done
+
+- name: Get ArgoCD initial admin password
+  block:
+    - name: Get ArgoCD admin password
+      shell: kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+      register: argocd_password
+      changed_when: false
+
+    - name: Get ArgoCD LoadBalancer endpoint
+      shell: |
+        kubectl -n argocd get service argocd-server -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+        if [ $? -ne 0 ] || [ -z "$(kubectl -n argocd get service argocd-server -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')" ]; then
+          kubectl -n argocd get service argocd-server -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+        fi
+      register: argocd_endpoint
+      changed_when: false
+
+    - name: Display ArgoCD access information
+      debug:
+        msg:
+          - "ArgoCD Server: {{ argocd_endpoint.stdout }}"
+          - "ArgoCD Username: admin"
+          - "ArgoCD Password: {{ argocd_password.stdout }}"
+
+- name: Get Ingress Controller LoadBalancer information
+  block:
+    - name: Get NGINX Ingress LoadBalancer endpoint
+      shell: |
+        kubectl -n ingress-nginx get service ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+        if [ $? -ne 0 ] || [ -z "$(kubectl -n ingress-nginx get service ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')" ]; then
+          kubectl -n ingress-nginx get service ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+        fi
+      register: nginx_endpoint
+      changed_when: false
+
+    - name: Display Ingress Controller information
+      debug:
+        msg:
+          - "NGINX Ingress Controller: {{ nginx_endpoint.stdout }}"
+
+- name: Create summary file
+  template:
+    src: eks_setup_summary.j2
+    dest: /tmp/eks_setup_summary.txt
+    mode: '0644'
+
+- name: Display setup summary
+  debug:
+    msg: "EKS setup completed. Summary saved to /tmp/eks_setup_summary.txt"

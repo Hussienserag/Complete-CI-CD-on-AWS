@@ -18,7 +18,7 @@ resource "null_resource" "print_ips" {
 
   provisioner "local-exec" {
     command = <<EOT
-      cat <<EOF > /home/mennatullah/Documents/ITI_Graduation_project/IAC/Ansible/my_inventory.ini
+      cat <<EOF > ../Ansible/my_inventory.ini
 [Jenkins_EC2]
 ${module.Jenkin_EC2_Module.Jenkins_public_ip}
 

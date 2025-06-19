@@ -15,14 +15,3 @@ resource "aws_instance" "Jenkins_Ec2" {
   }
   key_name = aws_key_pair.my_key_pair.key_name
 }
-output "EC2_Jenkins_id" {
-  value = aws_instance.Jenkins_Ec2.id
-}
-output "Jenkins_public_ip" {
-    value = aws_instance.Jenkins_Ec2.public_ip
-  
-}
-output "Jenkins_private_ip" {
-    value = aws_instance.Jenkins_Ec2.private_ip
-  
-}

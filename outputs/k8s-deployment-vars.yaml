@@ -1,0 +1,14 @@
+# Kubernetes Deployment Variables
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: terraform-outputs
+  namespace: default
+data:
+  jenkins-ip: "3.95.138.33"
+  eks-cluster-name: "eks-cluster"
+  eks-cluster-endpoint: "https://474741B934091C4E5D429005185D91DF.gr7.us-east-1.eks.amazonaws.com"
+  ecr-frontend-repo: "public.ecr.aws/b0b6i8m2/iti-project-frontend"
+  ecr-backend-repo: "public.ecr.aws/b0b6i8m2/iti-project-backend"
+  vpc-id: "vpc-061cf4b0120525d35"
+  generated-at: "2025-06-19T05:22:55Z"
