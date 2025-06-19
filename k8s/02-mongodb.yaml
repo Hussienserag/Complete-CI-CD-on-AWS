@@ -1,4 +1,4 @@
-# MongoDB with EKS-optimized configuration
+# MongoDB StatefulSet with EKS-optimized configuration
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -16,17 +16,16 @@ spec:
   storageClassName: gp2  # Use legacy EBS driver for now
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: mongodb-deployment
+  name: mongodb-statefulset
   namespace: ecommerce
   labels:
     app: mongodb
     tier: database
 spec:
-  replicas: 1
-  strategy:
-    type: Recreate  # MongoDB doesn't support rolling updates
+  serviceName: "mongodb-service"
+  replicas: 3
   selector:
     matchLabels:
       app: mongodb
@@ -54,7 +53,7 @@ spec:
               name: ecommerce-secrets
               key: MONGO_INITDB_ROOT_PASSWORD
         volumeMounts:
-        - name: mongodb-storage
+        - name: mongodb-data
           mountPath: /data/db
         resources:
           limits:
@@ -81,15 +80,40 @@ spec:
           initialDelaySeconds: 30
           periodSeconds: 10
           timeoutSeconds: 5
-      volumes:
-      - name: mongodb-storage
-        persistentVolumeClaim:
-          claimName: mongodb-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: mongodb-data
+      labels:
+        app: mongodb
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: gp2
+      resources:
+        requests:
+          storage: 20Gi
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: mongodb-service
+  namespace: ecommerce
+  labels:
+    app: mongodb
+    tier: database
+spec:
+  selector:
+    app: mongodb
+  ports:
+  - protocol: TCP
+    port: 27017
+    targetPort: 27017
+    name: mongodb
+  clusterIP: None  # Headless service for StatefulSet
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service-external
   namespace: ecommerce
   labels:
     app: mongodb

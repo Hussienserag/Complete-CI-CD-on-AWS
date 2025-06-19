@@ -36,6 +36,8 @@ frontend/package-lock.json
 frontend/yarn-lock.json
 *.sh
 k88s/
+k88s
+/k88s
 *.tfstate
 *.tfstate.*
 *.tfvars
