@@ -13,7 +13,7 @@ spec:
   resources:
     requests:
       storage: 20Gi  # Increased storage for production
-  storageClassName: ebs-gp3-fast  # Use optimized GP3 storage for EKS
+  storageClassName: gp2  # Use legacy EBS driver for now
 ---
 apiVersion: apps/v1
 kind: Deployment

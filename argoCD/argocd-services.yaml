@@ -1,0 +1,73 @@
+# ArgoCD Server Service for External Access
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server-nodeport
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/component: server
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: server
+    nodePort: 30080
+  - port: 443
+    targetPort: 8080
+    protocol: TCP
+    name: server-https
+    nodePort: 30443
+  selector:
+    app.kubernetes.io/name: argocd-server
+---
+# ArgoCD Server Service for Internal Access
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/component: server
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: server
+  - port: 443
+    targetPort: 8080
+    protocol: TCP
+    name: server-https
+  selector:
+    app.kubernetes.io/name: argocd-server
+---
+# ArgoCD LoadBalancer Service for External Access
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server-loadbalancer
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/component: server
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: server
+  - port: 443
+    targetPort: 8080
+    protocol: TCP
+    name: server-https
+  selector:
+    app.kubernetes.io/name: argocd-server
