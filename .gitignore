@@ -16,7 +16,7 @@ uploads/*.png
 
 # production
 /build
-
+*.sh
 # misc
 .DS_Store
 .env
