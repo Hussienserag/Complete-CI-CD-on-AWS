@@ -57,6 +57,32 @@
 
 ---
 
+## Architecture Diagrams
+
+<div align="center">
+
+### CI/CD Pipeline Architecture
+![CI/CD Pipeline](./svg/cicd.drawio.svg)
+
+### AWS Infrastructure Overview
+![AWS Infrastructure](./svg/infra_aws.drawio.svg)
+
+### Kubernetes Cluster Topology
+![Kubernetes Architecture](./svg/k8s.drawio.svg)
+
+### Continuous Integration Flow
+![Continuous Integration](./svg/ci.drawio.svg)
+
+### Continuous Deployment Workflow
+![Continuous Deployment](./svg/cd.drawio.svg)
+
+### Complete DevOps Workflow
+![Complete CI/CD Workflow](./svg/Cidi_kh.drawio.svg)
+
+</div>
+
+---
+
 ## DevOps Architecture Overview
 
 This project demonstrates a complete DevOps lifecycle implementation:
@@ -153,31 +179,7 @@ This project includes comprehensive documentation for each major component. Each
 
 ---
 
-## Architecture Diagrams
 
-<div align="center">
-
-### CI/CD Pipeline Architecture
-![CI/CD Pipeline](./svg/cicd.drawio.svg)
-
-### AWS Infrastructure Overview
-![AWS Infrastructure](./svg/infra_aws.drawio.svg)
-
-### Kubernetes Cluster Topology
-![Kubernetes Architecture](./svg/k8s.drawio.svg)
-
-### Continuous Integration Flow
-![Continuous Integration](./svg/ci.drawio.svg)
-
-### Continuous Deployment Workflow
-![Continuous Deployment](./svg/cd.drawio.svg)
-
-### Complete DevOps Workflow
-![Complete CI/CD Workflow](./svg/Cidi_kh.drawio.svg)
-
-</div>
-
----
 
 ## Project Structure
 
