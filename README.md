@@ -62,7 +62,7 @@
 <div align="center">
 
 ### CI/CD Pipeline Architecture
-![CI/CD Pipeline](./svg/cicd.drawio.svg)
+![CI/CD Pipeline](./svg/cicd.svg)
 
 ### AWS Infrastructure Overview
 ![AWS Infrastructure](./svg/infra_aws.drawio.svg)
