@@ -14,8 +14,6 @@ This document provides a comprehensive overview of the GitOps implementation usi
 - [Monitoring and Observability](#monitoring-and-observability)
 - [Security and Access Control](#security-and-access-control)
 - [Troubleshooting](#troubleshooting)
-- [Best Practices](#best-practices)
-
 ## Overview
 
 GitOps is a modern DevOps practice that uses Git repositories as the single source of truth for infrastructure and application deployment. ArgoCD is the GitOps operator that continuously monitors the Git repository and automatically synchronizes the cluster state with the desired state defined in Git.
