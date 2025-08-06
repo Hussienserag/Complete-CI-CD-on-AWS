@@ -38,7 +38,6 @@ k8s/
 ├── 08-loadbalancer-services.yaml # LoadBalancer services
 ├── 08-simple-loadbalancers.yaml  # Simplified LB configs
 ├── 09-alb-ingress.yaml           # ALB ingress for AWS
-├── deploy-eks-ready.sh           # EKS deployment script
 ├── ebs-storage-classes.yaml      # EBS storage classes
 └── mongodb-hostpath-storage.yaml # Local storage config
 ```
