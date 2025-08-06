@@ -11,29 +11,9 @@
   <img src="https://img.shields.io/badge/Ansible-Automation-EE0000?style=for-the-badge&logo=ansible&logoColor=white" alt="Ansible">
 </p>
 
-<h3 align="center">Information Technology Institute (ITI) - AWS Restart Track Final Project</h3>
-
-<p align="center">
-  <strong>A comprehensive, enterprise-grade e-commerce platform showcasing modern DevOps practices and cloud-native architecture.</strong>
-</p>
-
 <p align="center">
   Built with the MERN stack and deployed using Infrastructure as Code (Terraform), Configuration Management (Ansible), Container Orchestration (Kubernetes), CI/CD automation (Jenkins), and GitOps workflows (ArgoCD).
 </p>
-
-### DevOps Platform Banner
-```
-    ██╗████████╗██╗    ██████╗ ███████╗██╗   ██╗ ██████╗ ██████╗ ███████╗
-    ██║╚══██╔══╝██║    ██╔══██╗██╔════╝██║   ██║██╔═══██╗██╔══██╗██╔════╝
-    ██║   ██║   ██║    ██║  ██║█████╗  ██║   ██║██║   ██║██████╔╝███████╗
-    ██║   ██║   ██║    ██║  ██║██╔══╝  ╚██╗ ██╔╝██║   ██║██╔═══╝ ╚════██║
-    ██║   ██║   ██║    ██████╔╝███████╗ ╚████╔╝ ╚██████╔╝██║     ███████║
-    ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝  ╚═══╝   ╚═════╝ ╚═╝     ╚══════╝
-    
-    E-Commerce DevOps Infrastructure Deployment
-```
-
----
 
 </div>
 
