@@ -1,7 +1,7 @@
 
 <div align="center">
 
-# ITI E-Commerce Platform - Amazona
+# E-Commerce Platform - Amazona
 
 <p align="center">
   <img src="https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge&logo=github-actions" alt="Build Status">
