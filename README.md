@@ -52,9 +52,6 @@
 ### Continuous Deployment Workflow
 ![Continuous Deployment](./svg/cd.drawio.svg)
 
-### Complete DevOps Workflow
-![Complete CI/CD Workflow](./svg/Cidi_kh.drawio.svg)
-
 </div>
 
 ---
