@@ -30,8 +30,6 @@
 - [Local Development](#local-development)
 - [Monitoring & Observability](#monitoring--observability)
 - [Security Implementation](#security-implementation)
-- [Team](#team)
-- [Contributing](#contributing)
 
 ---
 
