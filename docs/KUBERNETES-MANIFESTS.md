@@ -1,6 +1,6 @@
 # Kubernetes Manifests Documentation
 
-This document provides a comprehensive overview of the Kubernetes manifests and deployment configurations used in the ITI E-Commerce Platform project.
+This document provides a comprehensive overview of the Kubernetes manifests and deployment configurations used in the E-Commerce Platform project.
 
 ## Table of Contents
 
