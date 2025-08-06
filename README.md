@@ -129,7 +129,6 @@ This project includes comprehensive documentation for each major component. Each
 | ![Code](https://img.shields.io/badge/Application-4CAF50?style=flat&logo=code&logoColor=white) | [**Application Source Code**](docs/APPLICATION-SOURCE-CODE.md) | MERN stack architecture, API documentation, and component structure |
 | ![ArgoCD](https://img.shields.io/badge/ArgoCD-EF7B4D?style=flat&logo=argo&logoColor=white) | [**GitOps & ArgoCD**](docs/GITOPS-ARGOCD.md) | GitOps principles, ArgoCD configuration, and continuous deployment |
 | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) | [**Docker Configuration**](docs/DOCKER-CONFIGURATION.md) | Containerization strategy, multi-stage builds, and registry management |
-| ![Scripts](https://img.shields.io/badge/Scripts-FF6B6B?style=flat&logo=gnu-bash&logoColor=white) | [**Scripts & Automation**](docs/SCRIPTS-AUTOMATION.md) | Deployment scripts, utilities, and automation tools |
 
 </div>
 
