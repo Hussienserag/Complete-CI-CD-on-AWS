@@ -43,24 +43,6 @@ k8s/
 └── mongodb-hostpath-storage.yaml # Local storage config
 ```
 
-### EKS Optimized Manifests (k88s/)
-
-```
-k88s/
-├── namespace.yaml                 # Namespace configuration
-├── configmap-secret.yaml         # Config maps and secrets
-├── mongodb.yaml                   # MongoDB with EKS optimization
-├── mongodb-persistent.yaml       # Persistent MongoDB config
-├── backend.yaml                   # Backend service
-├── backend-nodeport.yaml         # NodePort backend service
-├── frontend.yaml                  # Frontend service
-├── ingress.yaml                   # Standard ingress
-├── ip-access-ingress.yaml         # IP-restricted ingress
-├── monitoring.yaml                # Monitoring configuration
-├── cert-manager.yaml             # SSL certificate management
-└── seed-products-job.yaml        # Product seeding job
-```
-
 ## Core Manifests (k8s/)
 
 ### 00-namespace.yaml
