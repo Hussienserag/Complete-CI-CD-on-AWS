@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document provides comprehensive documentation for all Ansible components used in the ITI E-Commerce Platform project for server configuration and automation.
+This document provides comprehensive documentation for all Ansible components used in the E-Commerce Platform project for server configuration and automation.
 
 ## File Structure
 
